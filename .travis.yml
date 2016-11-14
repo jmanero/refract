@@ -21,13 +21,6 @@ after_success:
   - npm run report
 
 deploy:
-  - provider: npm
-    on:
-      tags: true
-    email: john.manero@gmail.com
-    api_key:
-      secure: "tela3m46dzUE9FsUULgQXkRoR/Q5tx9PgiPqtEGPqdKTN/bF57AwJMS3gmjzmPznA8TzDMmQojRQ7ioSKQov8O+DNnL++z6ISNqovz9LlG1wGymlgQgMUADrROXLdbPfRUiveuzlO18wtHjACpFRV/UXB43mvEm1jNBxOuWaPtM502+CqR96lBKmCgEQEFRW1EoSyaaIwyhutI9Pt6VJbrfrWRV9s4CoR1kLgNCvL0KC+DGeIVNKdpzlwtGyD4SYuVZLEHlAm8D9VIfUdxlogmA2L1sjxmVOCpCKLX+sqpHGqgovrl+uQ9gScUX+Xf3/8SIxwJPiLbLOG9eL5rq7l6zCqwtQlx/xMaVluePkkR29cbezYSAuedKI+eVTlgtFfoPCBVl9eWXgQKLvkv+FDFBhU5ShZ+fGhkbtXNXtYaXf0JxU56/ZDac9LLFtJGC3kVetk6ZX2sa5X0cz2+k6h3z7nFuNC56+jbUEO4AfoqwCnyaokTzTOuGH0vV/4gCxBtwlZukc/0Kq7w7E4Aff1YfmXvEXfJrGKb6+sZ/RDy64FOaqvNPXGkCwZtZGSShCj0xV6f+SYnEdMX7+ty5RYuIZbUNZCHnTtPtQkO68Bzc+xRH1zL9Yvp1icdBQNCiY/hyhRXCeGAG2WnxIynjN6zcjumDee954/M3YpgcmW8w="
-
   - provider: s3
     on:
       branch: master
