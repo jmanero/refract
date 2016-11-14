@@ -1,0 +1,41 @@
+dist: trusty
+sudo: required
+
+language: node_js
+node_js:
+  - '4.6'
+
+addons:
+  apt:
+    packages:
+      - build-essential
+      - uuid-dev
+
+script:
+  - npm test
+  - npm run lint
+  - npm run cover
+
+after_success:
+  - npm run doc
+  - npm run report
+
+deploy:
+  - provider: npm
+    on:
+      tags: true
+    email: john.manero@gmail.com
+    api_key:
+      secure: "tela3m46dzUE9FsUULgQXkRoR/Q5tx9PgiPqtEGPqdKTN/bF57AwJMS3gmjzmPznA8TzDMmQojRQ7ioSKQov8O+DNnL++z6ISNqovz9LlG1wGymlgQgMUADrROXLdbPfRUiveuzlO18wtHjACpFRV/UXB43mvEm1jNBxOuWaPtM502+CqR96lBKmCgEQEFRW1EoSyaaIwyhutI9Pt6VJbrfrWRV9s4CoR1kLgNCvL0KC+DGeIVNKdpzlwtGyD4SYuVZLEHlAm8D9VIfUdxlogmA2L1sjxmVOCpCKLX+sqpHGqgovrl+uQ9gScUX+Xf3/8SIxwJPiLbLOG9eL5rq7l6zCqwtQlx/xMaVluePkkR29cbezYSAuedKI+eVTlgtFfoPCBVl9eWXgQKLvkv+FDFBhU5ShZ+fGhkbtXNXtYaXf0JxU56/ZDac9LLFtJGC3kVetk6ZX2sa5X0cz2+k6h3z7nFuNC56+jbUEO4AfoqwCnyaokTzTOuGH0vV/4gCxBtwlZukc/0Kq7w7E4Aff1YfmXvEXfJrGKb6+sZ/RDy64FOaqvNPXGkCwZtZGSShCj0xV6f+SYnEdMX7+ty5RYuIZbUNZCHnTtPtQkO68Bzc+xRH1zL9Yvp1icdBQNCiY/hyhRXCeGAG2WnxIynjN6zcjumDee954/M3YpgcmW8w="
+
+  - provider: s3
+    on:
+      branch: master
+    access_key_id: AKIAIY5ZQMX6KC4737JQ
+    secret_access_key:
+      secure: FmSyFyi3xgTH4zpUemho0oqtIuWj2y/9RhgcwFEFQHtxy5Ntj2bxLXoOlJgjcV4PZMTTMQ7UY8+FAcs5p8adxaO/ozfZuYiEqOMjuTvwGLLz5y/+778VrrO1hafd2YRYAriYf2fb1Y99+VDA/oZTUxNbhzPIOH/ixYFLA3AXbVPRM0gAJ4TJ8gTJbvnZ30IahmF4KfgPLmR2odagY2VM7yAt8GmSt8dZEh7FPrelmXwFoqbMxgnIC56BwW4ZInkvY1Z5MZCvW6etOUylcBSYTzzfRYmP2LutF9gkERuTUOMRKsEtOcxEFRTLl0PW7swDwkyOH8fFHsigTCHp+MJCUvPSot330u+mlLvtTU6ExwS1pmR8VaskYa0JIu7xpv2lWI1Ch19PwtJsQOMXNkpBmEbBiWGklmz4/MmYhg7E4ldUWTbZUiDjDdKgTLXz8RnsLhLmWnfmG+7uPaPzFZebY5FCbi64v4mOQW09sFAvqCrbBXB7MCbzsGlLTMaixmx8VlplDZdG5QOv73Hzr4UXSe6COz7vIddJ2++2qdT/41esSIgeqOKQtL9p6zOz9MAFiAdBOS1MSsK8hAHiVZmwRGXlf3Uo7UiyzJH/2p53ApJboJb63I6y178v6dRiTmj1c1iAEWEM+JrkfHmgTT6bTRJptrvQQ0zOYy3bCLU4Ux8=
+    bucket: docs.manero.io
+    acl: public_read
+    skip_cleanup: true
+    local_dir: docs/jsdoc
+    upload-dir: jsdoc/jmanero/reftact

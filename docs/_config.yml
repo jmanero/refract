@@ -1,0 +1,23 @@
+name: Refract
+description:
+
+project:
+  owner: jmanero
+  repo: refract
+
+url: https://jmanero.github.io/refract
+baseurl: /reftact
+
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+collections:
+  pages:
+    output: true
+
+gems:
+  - jemoji

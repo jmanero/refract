@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>{{ site.name }} - {{ page.title }}</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+      <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.name }}</a>
+      <div class="nav navbar-nav pull-right">
+        <a href="https://travis-ci.org/{{ site.project.owner }}/{{ site.project.repo }}" target="_blank">
+          <img src="https://travis-ci.org/{{ site.project.owner }}/{{ site.project.repo }}.svg?branch=master">
+        </a>
+        <a href="https://coveralls.io/github/{{ site.project.owner }}/{{ site.project.repo }}?branch=master" target="_blank">
+          <img src="https://coveralls.io/repos/github/{{ site.project.owner }}/{{ site.project.repo }}/badge.svg?branch=master">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="main-content">
+        {{ page.content }}
+      </div>
+      <div class="right-nav">
+        <div class="card">
+          {% assign sorted = site.pages | sort:"order" %}
+          {% for p in sorted %}
+          <a class="link{% if page.title == p.title %}-active{% endif %}" href="{{ site.baseurl }}{{ p.url }}">
+            <i class="fa fa-lg fa-{{ p.icon }}"></i>&nbsp;{{ p.title }}</a>
+          {% endfor %}
+        </div>
+
+        <div class="card">
+          <a class="link" href="https://s3.amazonaws.com/docs.manero.io/jsdoc/{{ site.project.owner }}/{{ site.project.repo }}/index.html" target="_blank">
+            <i class="fa fa-lg fa-book"></i>&nbsp;JSDoc</a>
+          <a class="link" href="https://coveralls.io/github/{{ site.project.owner }}/{{ site.project.repo }}" target="_blank">
+            <i class="fa fa-lg fa-pie-chart"></i>&nbsp;Coverage Report</a>
+        </div>
+
+        <div class="card">
+          <a class="link" href="https://github.com/{{ site.project.owner }}/{{ site.project.repo }}" target="_blank">
+            <i class="fa fa-lg fa-github"></i>&nbsp;Source</a>
+          <a class="link" href="https://www.npmjs.com/package/{{ site.project.repo }}" target="_blank">
+            <i class="fa fa-lg fa-archive"></i>&nbsp;Package</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+</body>
+
+</html>
