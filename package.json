@@ -2,6 +2,8 @@
   "name": "refract",
   "version": "0.0.1",
   "description": "",
+  "repository": "https://github.com/jmanero/refract.git",
+  "homepage": "https://jmanero.github.io/refract/",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -19,7 +21,7 @@
     "guidelines",
     "json-rpc"
   ],
-  "author": "JOhn Manero <john.manero@gmail.com>",
+  "author": "John Manero <john.manero@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
