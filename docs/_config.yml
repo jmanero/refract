@@ -6,7 +6,7 @@ project:
   repo: refract
 
 url: https://jmanero.github.io/refract
-baseurl: /reftact
+baseurl: /refract
 
 markdown: kramdown
 
