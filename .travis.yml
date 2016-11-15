@@ -31,4 +31,4 @@ deploy:
     acl: public_read
     skip_cleanup: true
     local_dir: docs/jsdoc
-    upload-dir: jsdoc/jmanero/reftact
+    upload-dir: jsdoc/jmanero/refract
